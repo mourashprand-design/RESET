@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Take a minute. Reset.">
+<meta name="theme-color" content="#FAF6EE">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RESET">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>RESET</title>
+<style>
+:root{--bg:#FAF6EE;--card:#fff;--ac:#7B8CF5;--acd:#5E70E6;--acs:#E8ECFF;--ink:#2A2C33;--mut:#6D7080;--sh:0 8px 28px rgba(60,64,110,.09)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}body{overflow-x:hidden;overscroll-behavior-y:none;margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 ui-rounded,"SF Pro Rounded","Nunito","Segoe UI",system-ui,sans-serif}
+button,input,textarea{font:inherit;color:inherit;touch-action:manipulation}input,textarea{font-size:16px}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.scr{max-width:620px;margin:0 auto;padding:calc(22px + env(safe-area-inset-top)) calc(20px + env(safe-area-inset-right)) calc(70px + env(safe-area-inset-bottom)) calc(20px + env(safe-area-inset-left));animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+h1{font-size:1.9rem;line-height:1.2;margin:.4em 0 .3em;letter-spacing:-.01em}
+h2{font-size:1.4rem;margin:.3em 0}h3{font-size:1rem;margin:.4em 0;color:var(--mut)}
+.logo{font-size:2.4rem;font-weight:800;letter-spacing:.14em;margin:18px 0 0;color:var(--acd)}
+.tag{color:var(--mut);margin:0 0 30px}
+.mut,.note,.sm{color:var(--mut)}.note{font-size:1rem}.sm{font-size:1rem}
+.back{background:none;border:0;padding:10px 6px;margin-left:-6px;font-weight:600;color:var(--acd);cursor:pointer;font-size:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:18px}
+.mc{background:var(--card);border:2px solid transparent;border-radius:26px;box-shadow:var(--sh);padding:22px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;font-weight:600;transition:transform .15s,border-color .15s}
+.mc:hover,.mc:active{transform:translateY(-3px);border-color:var(--ac)}
+.mc span{font-size:2.5rem;line-height:1}
+.sur{grid-column:1/-1;background:var(--ac);color:#fff;flex-direction:row;justify-content:center;gap:10px;padding:20px}
+.foot{margin-top:28px;font-size:.95rem;color:var(--mut);text-align:center}
+.opt{width:100%;text-align:left;background:var(--card);border:2px solid transparent;border-radius:24px;box-shadow:var(--sh);padding:20px 22px;margin:0 0 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:border-color .15s,transform .15s}
+.opt:hover{border-color:var(--ac);transform:translateY(-2px)}
+.opt b{display:block;font-size:1.15rem}.opt small{color:var(--mut);font-size:.95rem}.opt i{font-style:normal;font-size:1.6rem;color:var(--ac)}
+.btn{display:block;width:100%;min-height:56px;border:0;border-radius:20px;background:var(--ac);color:#fff;font-weight:700;font-size:1.05rem;padding:14px 22px;margin:14px 0 0;cursor:pointer;transition:background .15s,transform .1s}
+.btn:hover{background:var(--acd)}.btn:active{transform:scale(.98)}
+.btn.ghost{background:var(--acs);color:var(--acd)}.btn.ghost:hover{background:#d9dfff}
+.two{display:grid;gap:12px}@media(min-width:480px){.two{grid-template-columns:1fr 1fr}}
+textarea,.in{width:100%;border:2px solid #E4E0D6;border-radius:20px;background:var(--card);padding:16px;resize:vertical;min-height:56px}
+textarea{min-height:220px}textarea:focus,.in:focus{outline:none;border-color:var(--ac)}
+.stp{font-size:1.7rem;font-weight:700;line-height:1.3;text-align:center;margin:36px 0 18px;animation:in .4s ease}
+.cd{font-size:3rem;font-weight:800;color:var(--ac);text-align:center}
+.big{font-size:4rem;font-weight:800;color:var(--ac);text-align:center;margin-top:14px}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:20px}.dots i{width:12px;height:12px;border-radius:50%;background:#E2E0EC;transition:background .3s}.dots i.on{background:var(--ac)}
+.bw{height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px}
+.orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#C5CDFF,var(--ac));box-shadow:0 0 70px rgba(123,140,245,.5);transition:transform 4s ease-in-out}
+.bt{font-size:1.6rem;font-weight:700}
+.done{text-align:center;padding-top:24px}.chk{width:84px;height:84px;margin:0 auto 10px;border-radius:50%;background:var(--acs);color:var(--acd);font-size:2.6rem;display:grid;place-items:center;animation:pop .5s}
+@keyframes pop{from{transform:scale(.4)}to{transform:scale(1)}}
+.msg{background:var(--card);border-radius:22px;padding:22px;box-shadow:var(--sh);font-size:1.15rem;font-weight:600;margin-top:12px}
+.tip{background:var(--card);border-radius:26px;box-shadow:var(--sh);padding:40px 24px;text-align:center;font-size:1.4rem;font-weight:700;margin-top:16px;min-height:170px;display:grid;place-items:center;animation:in .4s}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.chip{display:block;background:var(--card);border-radius:14px;padding:12px;margin:0 0 8px;box-shadow:var(--sh);font-size:1rem;cursor:pointer;word-break:break-word}
+.arena{position:relative;height:380px;overflow:hidden;background:var(--card);border-radius:26px;box-shadow:var(--sh);margin-top:12px}
+.bub{position:absolute;bottom:-110px;border:0;border-radius:50%;cursor:pointer;animation:rise linear forwards;box-shadow:inset -6px -6px 14px rgba(255,255,255,.6)}
+@keyframes rise{to{transform:translateY(-500px)}}
+.bs{text-align:center;font-weight:700;margin-top:12px}
+.tm{font-size:4.2rem;font-weight:800;text-align:center;color:var(--acd);margin:26px 0 4px;font-variant-numeric:tabular-nums}
+.qr{position:relative;height:380px;border-radius:30px;overflow:hidden;background:linear-gradient(160deg,#EEF0FF,#FBF1E4);display:grid;place-items:center;margin-top:12px}
+.qr i{position:absolute;border-radius:50%;filter:blur(40px);opacity:.7}
+.q1{width:200px;height:200px;background:#B9C3FF;left:-30px;top:-20px;animation:fl 14s ease-in-out infinite alternate}
+.q2{width:240px;height:240px;background:#FFD9C2;right:-40px;bottom:-40px;animation:fl 18s ease-in-out infinite alternate-reverse}
+@keyframes fl{to{transform:translate(70px,60px) scale(1.2)}}
+.qt{position:relative;z-index:1;max-width:80%;text-align:center;font-size:1.5rem;font-weight:700;opacity:0}
+.qt.sh{animation:qf 6s ease-in-out forwards}
+@keyframes qf{0%{opacity:0}18%,80%{opacity:1}100%{opacity:0}}
+canvas{width:100%;height:360px;background:var(--card);border-radius:26px;box-shadow:var(--sh);touch-action:none;display:block;margin-top:12px}
+.sw{display:flex;gap:12px;justify-content:center;margin-top:14px}.sw button{width:38px;height:38px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #E4E0D6;cursor:pointer}
+.sw button.on{box-shadow:0 0 0 3px var(--ink)}
+.ins{position:relative;background:var(--acs);border-radius:22px;padding:18px 54px 18px 20px;margin-top:22px}.ins b{font-size:1.1rem}.ins p{margin:4px 0 0}.ins .btn{margin-top:12px}.ins .x{position:absolute;top:4px;right:4px;width:48px;height:48px;border:0;background:none;font-size:1.7rem;color:var(--mut);cursor:pointer}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style></head>
+<body><main id="app"></main>
+<script>
+const $=s=>document.querySelector(s),app=$('#app');
+let T=[],cur=null;
+const clr=()=>{T.forEach(t=>{clearInterval(t);clearTimeout(t)});T=[]};
+const go=f=>{clr();f();scrollTo(0,0)};
+const shuffle=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const screen=(back,html)=>{app.innerHTML=`<div class="scr">${back?'<button class="back" id="bk">← Back</button>':''}${html}</div>`;if(back)$('#bk').onclick=()=>go(back)};
+
+const COMFORT=['Drink a glass of water.','Sit somewhere comfortable.','Listen to one song you like.','Stretch your shoulders.','Talk to someone you trust.','Wash your face with cool water.','Step outside for two minutes.','Wrap yourself in a blanket.','Put on something soft.'];
+const LONELY=['Send a meme to one person.','Sit in the same room as someone, no talking needed.','Listen to a song that feels like a hug.','Step outside for two minutes and look around.','Text someone: "Thinking of you."','Make a warm drink and hold it.'];
+const CHAL=['Name 5 animals that start with M.','Draw a creature using only circles.','Find 3 blue things near you.','Hum a song and see if you can guess it.','Write a 6-word story.','Balance on one foot for 20 seconds.','Invent a new snack. Name it.'];
+const BREATH={k:'breathe',n:5};
+
+const M={
+angry:{e:'😡',n:'Angry',t:'Let some of it out.',o:[
+['Release','Let your body let go.',{k:'steps',s:[['Clench your hands tight.',5],['Release. Let your fingers go loose.',3],['Squeeze your shoulders up to your ears.',5],['Drop them. Let them fall.',3],['Take one slow breath in…',4],['…and out.',4]]}],
+['Calm down','Slow breathing, 5 rounds.',BREATH],
+['Get it out','Type it. It stays here.',{k:'write',ph:`What's bothering you? Type anything.`}]]},
+sad:{e:'😢',n:'Sad',t:`You don't have to fix everything right now.`,o:[
+['Quiet room','Just be here for a bit.',{k:'quiet',s:['You are allowed to feel this.','Nothing to fix right now.','Breathe slowly. There is no rush.','This feeling will change.','You are doing okay.']}],
+['Make something','Doodle with your finger.',{k:'canvas'}],
+['Tiny comfort','One small kind thing.',{k:'tips',s:COMFORT}]]},
+scared:{e:'😰',n:'Scared',t:`Let's come back to right now.`,o:[
+['Grounding','5-4-3-2-1, one step at a time.',{k:'ground'}],
+['Breathe','Slow it all down.',BREATH],
+['Reach out','Send a message to someone.',{k:'reach',msg:`Hey, I'm having a rough moment. Can you stay with me for a bit?`}]]},
+over:{e:'🧠',n:'Overthinking',t:`Let's get those thoughts out of your head.`,o:[
+['Brain dump','Write it all down.',{k:'write',ph:'Write whatever is in your head. It does not need to make sense.'}],
+['Sort it','Control vs. can\'t control.',{k:'sort'}],
+['Distract me','Pop some bubbles.',{k:'bubbles'}]]},
+whelm:{e:'😵',n:'Overwhelmed',t:'You only need to handle one thing.',o:[
+['One thing','Pick your next tiny step.',{k:'one'}],
+['Reset','About 30 seconds of breathing.',{k:'breathe',n:4}],
+['Clear the noise','5 minutes. One tiny task.',{k:'timer',sec:300,pre:'<p class="stp" style="font-size:1.3rem">Pick one tiny task. Focus only on that until the timer ends.</p>'}]]},
+sleepy:{e:'😴',n:'Sleepy',t:'Slow everything down.',o:[
+['Wind down','A gentle bedtime sequence.',{k:'steps',s:['Put your phone on silent.','Dim the lights.','Drop your shoulders.',['Breathe in slowly…',4],['…and out, even slower.',6],'Let your eyes get heavy.']}],
+['Quiet room','Soft and still.',{k:'quiet',s:['Nothing left to do today.','Let your body get heavy.','Slow breath in. Slow breath out.','Tomorrow can wait.']}],
+['Screen pause','60 seconds away from the screen.',{k:'timer',sec:60,pre:'<p class="stp" style="font-size:1.3rem">Start the timer, then put the phone down and close your eyes.</p>',end:'Phone down. Sleep well.'}]]},
+frus:{e:'😤',n:'Frustrated',t:'Pause. Then try again.',o:[
+['Pause','Three slow breaths.',{k:'breathe',n:3}],
+['Release','Shake it out safely.',{k:'steps',s:[['Shake out your hands.',5],['Press your palms together hard.',5],['Let go. Roll your neck slowly.',6],['Take one deep breath.',4]]}],
+['What happened?','Write it, then plan a reset.',{k:'two',q:['What happened?','What do you wish had happened?','What is one small thing you can try next?']}]]},
+bored:{e:'🥱',n:'Bored',t:'Let\'s wake your brain up.',o:[
+['Pop bubbles','Easy, satisfying fun.',{k:'bubbles'}],
+['Tiny challenge','One quick thing to try.',{k:'tips',s:CHAL}],
+['Doodle','Draw whatever.',{k:'canvas'}]]},
+lonely:{e:'😶',n:'Lonely',t:'You matter. Let\'s connect.',o:[
+['Reach out','Send someone a message.',{k:'reach',msg:`Hey, I'm feeling a bit lonely. Want to chat or hang out?`}],
+['Not alone','A calm moment.',{k:'quiet',s:['Lots of people feel this way.','Feeling lonely does not mean something is wrong with you.','Connection can start small.','You are worth showing up for.']}],
+['Tiny comfort','One small step.',{k:'tips',s:LONELY}]]}
+};
+
+function home(){
+cur=null;
+screen(null,`<h1 class="logo">RESET</h1><p class="tag">Take a minute. Reset.</p><h1 style="font-size:1.6rem">How are you feeling right now?</h1>
+<div class="grid">${Object.entries(M).map(([k,m])=>`<button class="mc" data-m="${k}"><span>${m.e}</span>${m.n}</button>`).join('')}<button class="mc sur" id="sp"><span style="font-size:1.6rem">🎲</span>Surprise me</button></div><div id="ins"></div>
+<p class="foot">RESET is for everyday stress. If you feel unsafe or want to hurt yourself, tell a trusted adult or call your local emergency number now.</p>`);
+document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>go(()=>mood(b.dataset.m)));
+$('#sp').onclick=()=>{const k=shuffle(Object.keys(M))[0];go(()=>act(k,Math.floor(Math.random()*3)))};
+showInstall();
+}
+function mood(id){
+cur=id;const m=M[id];
+screen(home,`<div style="font-size:3rem">${m.e}</div><h1>${m.t}</h1><p class="mut">Pick one. Any is fine.</p>${m.o.map((o,i)=>`<button class="opt" data-i="${i}"><span><b>${o[0]}</b><small>${o[1]}</small></span><i>›</i></button>`).join('')}`);
+document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>go(()=>act(id,+b.dataset.i)));
+}
+function act(id,i){
+cur=id;const o=M[id].o[i];
+screen(()=>mood(id),`<h1>${o[0]}</h1><p class="mut" style="margin-top:0">${o[1]}</p><div id="box"></div>`);
+A[o[2].k]($('#box'),o[2]);
+}
+const fin=(b,m)=>{clr();b.innerHTML=`<div class="done"><div class="chk">✓</div><h2>${m||'Nice work.'}</h2><p class="mut">Notice how you feel now. A little lighter is enough.</p><button class="btn" id="d1">Try another way</button><button class="btn ghost" id="d2">Back to home</button></div>`;$('#d1').onclick=()=>go(()=>mood(cur));$('#d2').onclick=()=>go(home)};
+
+const A={
+steps(b,o){let i=0;const s=o.s;(function r(){
+if(i>=s.length)return fin(b);
+const [t,sec]=Array.isArray(s[i])?s[i]:[s[i]];
+b.innerHTML=`<div class="dots">${s.map((_,j)=>`<i class="${j<=i?'on':''}"></i>`).join('')}</div><div class="stp">${t}</div>${sec?`<div class="cd" id="cd">${sec}</div>`:''}<button class="btn" id="nx">${i==s.length-1?'Finish':'Next'}</button>`;
+if(sec){let n=sec;const id=setInterval(()=>{n--;$('#cd').textContent=n>0?n:'✓';if(n<=0)clearInterval(id)},1000);T.push(id)}
+$('#nx').onclick=()=>{clr();i++;r()};
+})()},
+breathe(b,o){
+b.innerHTML=`<div class="bw"><div class="orb" id="orb"></div><div class="bt" id="bt">Get ready…</div></div><p class="sm" id="bc" style="text-align:center"></p>`;
+let n=0,inh=true;const N=o.n||5;
+(function st(){
+if(n>=N)return fin(b,'Well done.');
+$('#orb').style.transform=inh?'scale(1.7)':'scale(1)';
+$('#bt').textContent=inh?'Breathe in':'Breathe out';
+$('#bc').textContent=`Round ${n+1} of ${N}`;
+T.push(setTimeout(()=>{if(!inh)n++;inh=!inh;st()},inh&&n==0?4600:4000));
+})();},
+write(b,o){
+b.innerHTML=`<textarea id="tx" placeholder="${o.ph}"></textarea><p class="note">🔒 Stays on this page. Never saved or sent. It disappears when you leave.</p><div class="two"><button class="btn ghost" id="cl">Clear it</button><button class="btn" id="dn">I feel lighter</button></div>`;
+$('#cl').onclick=()=>{$('#tx').value='';$('#tx').focus()};$('#dn').onclick=()=>fin(b);},
+two(b,o){let i=0;(function r(){
+if(i>=o.q.length)return fin(b,'Good. Now go try it.');
+b.innerHTML=`<div class="dots">${o.q.map((_,j)=>`<i class="${j<=i?'on':''}"></i>`).join('')}</div><h2 style="margin-top:20px">${o.q[i]}</h2><textarea style="min-height:150px"></textarea><p class="note">🔒 Not saved. Stays on this page.</p><button class="btn" id="nx">${i==o.q.length-1?'Finish':'Next'}</button>`;
+$('#nx').onclick=()=>{i++;r()}})()},
+canvas(b){
+b.innerHTML=`<canvas id="cv"></canvas><div class="sw" id="sw"></div><div class="two"><button class="btn ghost" id="cl">Clear</button><button class="btn" id="dn">I'm done</button></div>`;
+const cv=$('#cv'),d=devicePixelRatio||1,r=cv.getBoundingClientRect(),x=cv.getContext('2d');
+cv.width=r.width*d;cv.height=360*d;x.scale(d,d);x.lineCap=x.lineJoin='round';x.lineWidth=5;x.strokeStyle='#2A2C33';
+let dr=false;
+const pos=e=>{const q=cv.getBoundingClientRect();return[e.clientX-q.left,e.clientY-q.top]};
+cv.onpointerdown=e=>{dr=true;cv.setPointerCapture(e.pointerId);const[p,q]=pos(e);x.beginPath();x.moveTo(p,q);x.lineTo(p+.1,q+.1);x.stroke()};
+cv.onpointermove=e=>{if(!dr)return;const[p,q]=pos(e);x.lineTo(p,q);x.stroke()};
+cv.onpointerup=cv.onpointercancel=()=>dr=false;
+['#2A2C33','#7B8CF5','#F29E8E','#7CC6A4','#F2C46D'].forEach((c,i)=>{const s=document.createElement('button');s.style.background=c;s.setAttribute('aria-label','Colour '+(i+1));if(!i)s.className='on';s.onclick=()=>{x.strokeStyle=c;document.querySelectorAll('#sw button').forEach(z=>z.className='');s.className='on'};$('#sw').appendChild(s)});
+$('#cl').onclick=()=>x.clearRect(0,0,r.width,360);$('#dn').onclick=()=>fin(b);},
+tips(b,o){const q=shuffle(o.s);let i=0;(function r(){
+b.innerHTML=`<div class="tip">${q[i%q.length]}</div><button class="btn ghost" id="nx">Another one</button><button class="btn" id="dn">That helped</button>`;
+$('#nx').onclick=()=>{i++;r()};$('#dn').onclick=()=>fin(b);})()},
+ground(b){const V=['see','touch','hear','smell','taste'];let s=0,c=0;(function r(){
+if(s>=5)return fin(b,'You are here. You are safe in this moment.');
+const N=5-s;
+b.innerHTML=`<div class="big">${N}</div><div class="stp" style="margin-top:6px">Notice ${N} thing${N>1?'s':''} you can ${V[s]}.</div><div class="dots">${Array.from({length:N},(_,j)=>`<i class="${j<c?'on':''}"></i>`).join('')}</div><button class="btn" id="f">I found one</button>`;
+$('#f').onclick=()=>{c++;if(c>=N){s++;c=0}r()};})()},
+reach(b,o){
+b.innerHTML=`<p>Pick one person you trust: a friend, parent, teacher or sibling. Send them this:</p><div class="msg">${esc(o.msg)}</div><button class="btn" id="cp">Copy message</button><p class="note">Paste it into a text, or just say it out loud. You don't have to explain everything.</p><button class="btn ghost" id="dn">I'll reach out</button>`;
+$('#cp').onclick=async()=>{try{await navigator.clipboard.writeText(o.msg)}catch(e){const t=document.createElement('textarea');t.value=o.msg;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove()}$('#cp').textContent='Copied ✓'};
+$('#dn').onclick=()=>fin(b);},
+sort(b){
+b.innerHTML=`<p>Type one thought, then choose where it goes.</p><input class="in" id="si" placeholder="e.g. What my friends think of me"><div class="two"><button class="btn" data-w="y">I can control this</button><button class="btn ghost" data-w="n">I can't control this</button></div><div class="cols"><div><h3>I can control</h3><div id="ly"></div></div><div><h3>I can't control</h3><div id="ln"></div></div></div><p class="note" id="sn">Tap a thought to remove it. Nothing is saved.</p><button class="btn ghost" id="dn">I'm done sorting</button>`;
+b.querySelectorAll('[data-w]').forEach(z=>z.onclick=()=>{const v=$('#si').value.trim();if(!v){$('#si').focus();return}const w=z.dataset.w,c=document.createElement('span');c.className='chip';c.textContent=v;c.onclick=()=>c.remove();$('#l'+w).appendChild(c);$('#si').value='';$('#si').focus();$('#sn').textContent=w=='n'?'Let that one sit there. You can put it down for now.':'Good. What is one small step you could take on it?'});
+$('#dn').onclick=()=>fin(b);},
+bubbles(b){
+b.innerHTML=`<div class="bs">Popped: <b id="pc">0</b></div><div class="arena" id="ar"></div><button class="btn ghost" id="dn">I'm good now</button>`;
+let p=0;const ar=$('#ar');
+const sp=()=>{const e=document.createElement('button'),s=46+Math.random()*50;e.className='bub';e.setAttribute('aria-label','Pop');e.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*(ar.clientWidth-s)}px;animation-duration:${5+Math.random()*4}s;background:hsl(${210+Math.random()*60} 80% 80%/.75)`;e.onclick=()=>{p++;$('#pc').textContent=p;e.remove()};e.onanimationend=()=>e.remove();ar.appendChild(e)};
+for(let i=0;i<5;i++)setTimeout(sp,i*250);T.push(setInterval(sp,650));
+$('#dn').onclick=()=>fin(b);},
+timer(b,o){
+let n=o.sec,run=false,id;
+b.innerHTML=`${o.pre||''}<div class="tm" id="tm"></div><button class="btn" id="st">Start</button><button class="btn ghost" id="rs">Reset</button>`;
+const f=()=>$('#tm').textContent=Math.floor(n/60)+':'+String(n%60).padStart(2,'0');f();
+$('#st').onclick=()=>{if(run){run=false;clearInterval(id);$('#st').textContent='Resume';return}
+run=true;$('#st').textContent='Pause';id=setInterval(()=>{n--;f();if(n<=0){clearInterval(id);fin(b,o.end||'Time. Well done.')}},1000);T.push(id)};
+$('#rs').onclick=()=>{clearInterval(id);run=false;n=o.sec;f();$('#st').textContent='Start'};},
+one(b){
+b.innerHTML=`<p style="font-size:1.25rem;font-weight:700">What is the smallest useful thing you could do next?</p><input class="in" id="oi" placeholder="e.g. Open my notebook"><button class="btn" id="ob">That's my one thing</button>`;
+$('#ob').onclick=()=>{const v=$('#oi').value.trim();if(!v){$('#oi').focus();return}
+b.innerHTML=`<p class="mut">Just this, for now:</p><div class="stp" style="margin-top:10px">${esc(v)}</div><p class="note" style="text-align:center">Everything else can wait.</p><button class="btn" id="o5">Focus for 5 minutes</button><button class="btn ghost" id="dn">I'll take it from here</button>`;
+$('#o5').onclick=()=>A.timer(b,{sec:300,pre:`<div class="stp" style="font-size:1.4rem">${esc(v)}</div>`});$('#dn').onclick=()=>fin(b);};},
+quiet(b,o){
+b.innerHTML=`<div class="qr"><i class="q1"></i><i class="q2"></i><div class="qt" id="qt"></div></div><button class="btn ghost" id="dn">I'm ready to go</button>`;
+let i=0;const sh=()=>{const q=$('#qt');q.classList.remove('sh');void q.offsetWidth;q.textContent=o.s[i++%o.s.length];q.classList.add('sh')};
+sh();T.push(setInterval(sh,6000));$('#dn').onclick=()=>fin(b);}
+};
+let dp=null;
+const standalone=()=>(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
+const dismissed=()=>{try{return Date.now()-(+localStorage.getItem('reset_ins')||0)<12096e5}catch(e){return false}};
+function showInstall(){
+const h=$('#ins');if(!h||standalone()||dismissed())return;
+const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+if(!dp&&!ios)return;
+h.innerHTML=`<div class="ins"><button class="x" id="ix" aria-label="Dismiss">×</button><b>Keep RESET close</b><p>Add RESET to your home screen so it's there when you need it.</p>${dp?'<button class="btn" id="ib">Install RESET</button>':'<p class="note">On iPhone: tap Share, then Add to Home Screen.</p>'}</div>`;
+$('#ix').onclick=()=>{try{localStorage.setItem('reset_ins',Date.now())}catch(e){}h.innerHTML=''};
+if(dp)$('#ib').onclick=async()=>{dp.prompt();try{await dp.userChoice}catch(e){}dp=null;h.innerHTML=''};
+}
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;showInstall()});
+addEventListener('appinstalled',()=>{dp=null;const h=$('#ins');if(h)h.innerHTML=''});
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'))
+addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+home();
+</script></body></html>
