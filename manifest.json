@@ -1,10 +1,10 @@
 {
-  "id": "/",
+  "id": "/RESET/",
   "name": "RESET",
   "short_name": "RESET",
   "description": "Take a minute. Reset.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/RESET/",
+  "scope": "/RESET/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#FAF6EE",
